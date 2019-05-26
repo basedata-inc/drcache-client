@@ -6,7 +6,7 @@ import (
 	"log"
 	"time"
 
-	pb "drcacheClient/grpc"
+	pb "drcache-client/grpc"
 )
 
 const (
@@ -20,10 +20,10 @@ func add(c pb.DrcacheClient, item pb.Item) (*pb.Reply, error) {
 	return r, err
 }
 
-func get(c pb.DrcacheClient) (*pb.Reply, error) {
+func get(c pb.DrcacheClient, key string) (*pb.Reply, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
 	defer cancel()
-	r, err := c.Get(ctx, &pb.GetRequest{})
+	r, err := c.Get(ctx, &pb.GetRequest{Key: key})
 	return r, err
 }
 
@@ -37,11 +37,20 @@ func main() {
 
 	c := pb.NewDrcacheClient(conn)
 
-	item := pb.Item{Key: "qwe", Value: []byte("111331"), LastUpdate: 1, Expiration: 9}
-	r, err := add(c, item)
+	item1 := pb.Item{Key: "q", Value: []byte("111331"), LastUpdate: 1, Expiration: 100}
+	r, err := add(c, item1)
+
 	if err != nil {
 		log.Fatalf("could not greet: %v", err)
 	}
-	log.Printf("Greeting: %s", r.Message)
+	log.Printf("key: %s", r.Message)
+
+	//add(c, item2)
+	r1, err1 := get(c, "q")
+
+	if err1 != nil {
+		log.Fatalf("could not greet: %v", err)
+	}
+	log.Printf("Greeting: %s", r1.Item.Value)
 
 }

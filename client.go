@@ -10,14 +10,20 @@ import (
 )
 
 const (
-	address     = "localhost:50051"
-	defaultName = "world"
+	address = "localhost:50051"
 )
 
-func add(c pb.DrcacheClient) (*pb.Reply, error) {
+func add(c pb.DrcacheClient, item pb.Item) (*pb.Reply, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
 	defer cancel()
-	r, err := c.Add(ctx, &pb.AddRequest{Item: &pb.Item{Key: "asd", Value: []byte("1111"), LastUpdate: 1, Expiration: 9}})
+	r, err := c.Add(ctx, &pb.AddRequest{Item: &item})
+	return r, err
+}
+
+func get(c pb.DrcacheClient) (*pb.Reply, error) {
+	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
+	defer cancel()
+	r, err := c.Get(ctx, &pb.GetRequest{})
 	return r, err
 }
 
@@ -30,7 +36,9 @@ func main() {
 	defer conn.Close()
 
 	c := pb.NewDrcacheClient(conn)
-	r, err := add(c)
+
+	item := pb.Item{Key: "qwe", Value: []byte("111331"), LastUpdate: 1, Expiration: 9}
+	r, err := add(c, item)
 	if err != nil {
 		log.Fatalf("could not greet: %v", err)
 	}

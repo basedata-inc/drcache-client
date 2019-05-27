@@ -165,139 +165,6 @@ func (m *CompareAndSwapRequest) GetItem() *Item {
 	return nil
 }
 
-type DecrementRequest struct {
-	Key                  string   `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
-	Delta                int64    `protobuf:"varint,2,opt,name=delta,proto3" json:"delta,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *DecrementRequest) Reset()         { *m = DecrementRequest{} }
-func (m *DecrementRequest) String() string { return proto.CompactTextString(m) }
-func (*DecrementRequest) ProtoMessage()    {}
-func (*DecrementRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_671b7d4d1004a799, []int{3}
-}
-
-func (m *DecrementRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_DecrementRequest.Unmarshal(m, b)
-}
-func (m *DecrementRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_DecrementRequest.Marshal(b, m, deterministic)
-}
-func (m *DecrementRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_DecrementRequest.Merge(m, src)
-}
-func (m *DecrementRequest) XXX_Size() int {
-	return xxx_messageInfo_DecrementRequest.Size(m)
-}
-func (m *DecrementRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_DecrementRequest.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_DecrementRequest proto.InternalMessageInfo
-
-func (m *DecrementRequest) GetKey() string {
-	if m != nil {
-		return m.Key
-	}
-	return ""
-}
-
-func (m *DecrementRequest) GetDelta() int64 {
-	if m != nil {
-		return m.Delta
-	}
-	return 0
-}
-
-type IncrementRequest struct {
-	Key                  string   `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
-	Delta                int64    `protobuf:"varint,2,opt,name=delta,proto3" json:"delta,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *IncrementRequest) Reset()         { *m = IncrementRequest{} }
-func (m *IncrementRequest) String() string { return proto.CompactTextString(m) }
-func (*IncrementRequest) ProtoMessage()    {}
-func (*IncrementRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_671b7d4d1004a799, []int{4}
-}
-
-func (m *IncrementRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_IncrementRequest.Unmarshal(m, b)
-}
-func (m *IncrementRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_IncrementRequest.Marshal(b, m, deterministic)
-}
-func (m *IncrementRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_IncrementRequest.Merge(m, src)
-}
-func (m *IncrementRequest) XXX_Size() int {
-	return xxx_messageInfo_IncrementRequest.Size(m)
-}
-func (m *IncrementRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_IncrementRequest.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_IncrementRequest proto.InternalMessageInfo
-
-func (m *IncrementRequest) GetKey() string {
-	if m != nil {
-		return m.Key
-	}
-	return ""
-}
-
-func (m *IncrementRequest) GetDelta() int64 {
-	if m != nil {
-		return m.Delta
-	}
-	return 0
-}
-
-type ReplaceRequest struct {
-	Item                 *Item    `protobuf:"bytes,1,opt,name=item,proto3" json:"item,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *ReplaceRequest) Reset()         { *m = ReplaceRequest{} }
-func (m *ReplaceRequest) String() string { return proto.CompactTextString(m) }
-func (*ReplaceRequest) ProtoMessage()    {}
-func (*ReplaceRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_671b7d4d1004a799, []int{5}
-}
-
-func (m *ReplaceRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_ReplaceRequest.Unmarshal(m, b)
-}
-func (m *ReplaceRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_ReplaceRequest.Marshal(b, m, deterministic)
-}
-func (m *ReplaceRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ReplaceRequest.Merge(m, src)
-}
-func (m *ReplaceRequest) XXX_Size() int {
-	return xxx_messageInfo_ReplaceRequest.Size(m)
-}
-func (m *ReplaceRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_ReplaceRequest.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_ReplaceRequest proto.InternalMessageInfo
-
-func (m *ReplaceRequest) GetItem() *Item {
-	if m != nil {
-		return m.Item
-	}
-	return nil
-}
-
 type SetRequest struct {
 	Item                 *Item    `protobuf:"bytes,1,opt,name=item,proto3" json:"item,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -309,7 +176,7 @@ func (m *SetRequest) Reset()         { *m = SetRequest{} }
 func (m *SetRequest) String() string { return proto.CompactTextString(m) }
 func (*SetRequest) ProtoMessage()    {}
 func (*SetRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_671b7d4d1004a799, []int{6}
+	return fileDescriptor_671b7d4d1004a799, []int{3}
 }
 
 func (m *SetRequest) XXX_Unmarshal(b []byte) error {
@@ -337,53 +204,6 @@ func (m *SetRequest) GetItem() *Item {
 	return nil
 }
 
-type TouchRequest struct {
-	Key                  string   `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
-	Seconds              int32    `protobuf:"varint,2,opt,name=seconds,proto3" json:"seconds,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *TouchRequest) Reset()         { *m = TouchRequest{} }
-func (m *TouchRequest) String() string { return proto.CompactTextString(m) }
-func (*TouchRequest) ProtoMessage()    {}
-func (*TouchRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_671b7d4d1004a799, []int{7}
-}
-
-func (m *TouchRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_TouchRequest.Unmarshal(m, b)
-}
-func (m *TouchRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_TouchRequest.Marshal(b, m, deterministic)
-}
-func (m *TouchRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_TouchRequest.Merge(m, src)
-}
-func (m *TouchRequest) XXX_Size() int {
-	return xxx_messageInfo_TouchRequest.Size(m)
-}
-func (m *TouchRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_TouchRequest.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_TouchRequest proto.InternalMessageInfo
-
-func (m *TouchRequest) GetKey() string {
-	if m != nil {
-		return m.Key
-	}
-	return ""
-}
-
-func (m *TouchRequest) GetSeconds() int32 {
-	if m != nil {
-		return m.Seconds
-	}
-	return 0
-}
-
 type DeleteRequest struct {
 	Key                  string   `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -395,7 +215,7 @@ func (m *DeleteRequest) Reset()         { *m = DeleteRequest{} }
 func (m *DeleteRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteRequest) ProtoMessage()    {}
 func (*DeleteRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_671b7d4d1004a799, []int{8}
+	return fileDescriptor_671b7d4d1004a799, []int{4}
 }
 
 func (m *DeleteRequest) XXX_Unmarshal(b []byte) error {
@@ -433,7 +253,7 @@ func (m *DeleteAllRequest) Reset()         { *m = DeleteAllRequest{} }
 func (m *DeleteAllRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteAllRequest) ProtoMessage()    {}
 func (*DeleteAllRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_671b7d4d1004a799, []int{9}
+	return fileDescriptor_671b7d4d1004a799, []int{5}
 }
 
 func (m *DeleteAllRequest) XXX_Unmarshal(b []byte) error {
@@ -465,7 +285,7 @@ func (m *GetRequest) Reset()         { *m = GetRequest{} }
 func (m *GetRequest) String() string { return proto.CompactTextString(m) }
 func (*GetRequest) ProtoMessage()    {}
 func (*GetRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_671b7d4d1004a799, []int{10}
+	return fileDescriptor_671b7d4d1004a799, []int{6}
 }
 
 func (m *GetRequest) XXX_Unmarshal(b []byte) error {
@@ -505,7 +325,7 @@ func (m *Reply) Reset()         { *m = Reply{} }
 func (m *Reply) String() string { return proto.CompactTextString(m) }
 func (*Reply) ProtoMessage()    {}
 func (*Reply) Descriptor() ([]byte, []int) {
-	return fileDescriptor_671b7d4d1004a799, []int{11}
+	return fileDescriptor_671b7d4d1004a799, []int{7}
 }
 
 func (m *Reply) XXX_Unmarshal(b []byte) error {
@@ -551,7 +371,7 @@ func (m *AddServerRequest) Reset()         { *m = AddServerRequest{} }
 func (m *AddServerRequest) String() string { return proto.CompactTextString(m) }
 func (*AddServerRequest) ProtoMessage()    {}
 func (*AddServerRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_671b7d4d1004a799, []int{12}
+	return fileDescriptor_671b7d4d1004a799, []int{8}
 }
 
 func (m *AddServerRequest) XXX_Unmarshal(b []byte) error {
@@ -590,7 +410,7 @@ func (m *DropServerRequest) Reset()         { *m = DropServerRequest{} }
 func (m *DropServerRequest) String() string { return proto.CompactTextString(m) }
 func (*DropServerRequest) ProtoMessage()    {}
 func (*DropServerRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_671b7d4d1004a799, []int{13}
+	return fileDescriptor_671b7d4d1004a799, []int{9}
 }
 
 func (m *DropServerRequest) XXX_Unmarshal(b []byte) error {
@@ -618,93 +438,123 @@ func (m *DropServerRequest) GetServer() string {
 	return ""
 }
 
-type CheckConnectionRequest struct {
+type GetServersRequest struct {
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *CheckConnectionRequest) Reset()         { *m = CheckConnectionRequest{} }
-func (m *CheckConnectionRequest) String() string { return proto.CompactTextString(m) }
-func (*CheckConnectionRequest) ProtoMessage()    {}
-func (*CheckConnectionRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_671b7d4d1004a799, []int{14}
+func (m *GetServersRequest) Reset()         { *m = GetServersRequest{} }
+func (m *GetServersRequest) String() string { return proto.CompactTextString(m) }
+func (*GetServersRequest) ProtoMessage()    {}
+func (*GetServersRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_671b7d4d1004a799, []int{10}
 }
 
-func (m *CheckConnectionRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CheckConnectionRequest.Unmarshal(m, b)
+func (m *GetServersRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_GetServersRequest.Unmarshal(m, b)
 }
-func (m *CheckConnectionRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CheckConnectionRequest.Marshal(b, m, deterministic)
+func (m *GetServersRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_GetServersRequest.Marshal(b, m, deterministic)
 }
-func (m *CheckConnectionRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CheckConnectionRequest.Merge(m, src)
+func (m *GetServersRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetServersRequest.Merge(m, src)
 }
-func (m *CheckConnectionRequest) XXX_Size() int {
-	return xxx_messageInfo_CheckConnectionRequest.Size(m)
+func (m *GetServersRequest) XXX_Size() int {
+	return xxx_messageInfo_GetServersRequest.Size(m)
 }
-func (m *CheckConnectionRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_CheckConnectionRequest.DiscardUnknown(m)
+func (m *GetServersRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetServersRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_CheckConnectionRequest proto.InternalMessageInfo
+var xxx_messageInfo_GetServersRequest proto.InternalMessageInfo
+
+type ServerList struct {
+	Servers              []string `protobuf:"bytes,1,rep,name=servers,proto3" json:"servers,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *ServerList) Reset()         { *m = ServerList{} }
+func (m *ServerList) String() string { return proto.CompactTextString(m) }
+func (*ServerList) ProtoMessage()    {}
+func (*ServerList) Descriptor() ([]byte, []int) {
+	return fileDescriptor_671b7d4d1004a799, []int{11}
+}
+
+func (m *ServerList) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ServerList.Unmarshal(m, b)
+}
+func (m *ServerList) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ServerList.Marshal(b, m, deterministic)
+}
+func (m *ServerList) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ServerList.Merge(m, src)
+}
+func (m *ServerList) XXX_Size() int {
+	return xxx_messageInfo_ServerList.Size(m)
+}
+func (m *ServerList) XXX_DiscardUnknown() {
+	xxx_messageInfo_ServerList.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ServerList proto.InternalMessageInfo
+
+func (m *ServerList) GetServers() []string {
+	if m != nil {
+		return m.Servers
+	}
+	return nil
+}
 
 func init() {
 	proto.RegisterType((*Item)(nil), "definitions.Item")
 	proto.RegisterType((*AddRequest)(nil), "definitions.AddRequest")
 	proto.RegisterType((*CompareAndSwapRequest)(nil), "definitions.CompareAndSwapRequest")
-	proto.RegisterType((*DecrementRequest)(nil), "definitions.DecrementRequest")
-	proto.RegisterType((*IncrementRequest)(nil), "definitions.IncrementRequest")
-	proto.RegisterType((*ReplaceRequest)(nil), "definitions.ReplaceRequest")
 	proto.RegisterType((*SetRequest)(nil), "definitions.SetRequest")
-	proto.RegisterType((*TouchRequest)(nil), "definitions.TouchRequest")
 	proto.RegisterType((*DeleteRequest)(nil), "definitions.DeleteRequest")
 	proto.RegisterType((*DeleteAllRequest)(nil), "definitions.DeleteAllRequest")
 	proto.RegisterType((*GetRequest)(nil), "definitions.GetRequest")
 	proto.RegisterType((*Reply)(nil), "definitions.Reply")
 	proto.RegisterType((*AddServerRequest)(nil), "definitions.AddServerRequest")
 	proto.RegisterType((*DropServerRequest)(nil), "definitions.DropServerRequest")
-	proto.RegisterType((*CheckConnectionRequest)(nil), "definitions.CheckConnectionRequest")
+	proto.RegisterType((*GetServersRequest)(nil), "definitions.GetServersRequest")
+	proto.RegisterType((*ServerList)(nil), "definitions.ServerList")
 }
 
 func init() { proto.RegisterFile("grpc/definitions/definitions.proto", fileDescriptor_671b7d4d1004a799) }
 
 var fileDescriptor_671b7d4d1004a799 = []byte{
-	// 539 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x95, 0x6d, 0x6b, 0x13, 0x41,
-	0x10, 0xc7, 0x4d, 0xf3, 0x44, 0xa7, 0x0f, 0xa6, 0x8b, 0xd6, 0xb3, 0x62, 0x88, 0x2b, 0x42, 0x40,
-	0xa9, 0xd0, 0x14, 0x94, 0x22, 0xe2, 0x99, 0x40, 0xac, 0xf8, 0xea, 0xa2, 0x1f, 0x60, 0xbd, 0x1d,
-	0x9b, 0xa3, 0xf7, 0xe4, 0xee, 0xa6, 0xea, 0x07, 0xf4, 0x7b, 0xc9, 0x5d, 0xee, 0x72, 0xb7, 0x9b,
-	0x6c, 0x25, 0x7d, 0x77, 0xb3, 0x33, 0xf3, 0x9f, 0x87, 0xfc, 0x86, 0x00, 0xbd, 0x12, 0xa9, 0xff,
-	0x9a, 0xe3, 0x8f, 0x20, 0x0e, 0x54, 0x90, 0xc4, 0xb2, 0xfe, 0x7d, 0x9a, 0x8a, 0x44, 0x25, 0x64,
-	0xaf, 0xf6, 0x44, 0x63, 0x68, 0x5d, 0x2a, 0x8c, 0x48, 0x0f, 0x9a, 0xd7, 0xf8, 0xc7, 0x69, 0x0c,
-	0x1a, 0xc3, 0x5d, 0x2f, 0xfb, 0x24, 0x0f, 0xa0, 0x7d, 0xc3, 0xc2, 0x05, 0x3a, 0x3b, 0x83, 0xc6,
-	0x70, 0xdf, 0x5b, 0x1a, 0xa4, 0x0f, 0x10, 0x32, 0xa9, 0xbe, 0xa5, 0x9c, 0x29, 0x74, 0x9a, 0x83,
-	0xc6, 0xf0, 0xc0, 0xab, 0xbd, 0x64, 0x7e, 0xfc, 0x9d, 0x06, 0x82, 0x65, 0xf2, 0x4e, 0x6b, 0xe9,
-	0xaf, 0x5e, 0xe8, 0x08, 0xc0, 0xe5, 0xdc, 0xc3, 0x9f, 0x0b, 0x94, 0x8a, 0xbc, 0x80, 0x56, 0xa0,
-	0x30, 0xca, 0xcb, 0xee, 0x9d, 0x1d, 0x9d, 0xd6, 0x9b, 0xcd, 0xda, 0xf2, 0x72, 0x37, 0x7d, 0x0f,
-	0x0f, 0xc7, 0x49, 0x94, 0x32, 0x81, 0x6e, 0xcc, 0x67, 0xbf, 0x58, 0xba, 0x65, 0xfe, 0x05, 0xf4,
-	0x26, 0xe8, 0x0b, 0x8c, 0x30, 0x56, 0x65, 0xea, 0xc6, 0x81, 0x39, 0x86, 0x8a, 0xe5, 0x03, 0x37,
-	0xbd, 0xa5, 0x91, 0xe5, 0x5e, 0xc6, 0x77, 0xcc, 0x7d, 0x03, 0x87, 0x1e, 0xa6, 0x21, 0xf3, 0x71,
-	0xcb, 0x86, 0x47, 0x00, 0x33, 0x54, 0x5b, 0x4f, 0xb9, 0xff, 0x35, 0x59, 0xf8, 0x73, 0x7b, 0x97,
-	0x0e, 0x74, 0x25, 0xfa, 0x49, 0xcc, 0x65, 0xde, 0x67, 0xdb, 0x2b, 0x4d, 0xfa, 0x0c, 0x0e, 0x26,
-	0x18, 0xa2, 0x42, 0x6b, 0x32, 0x25, 0xd9, 0x12, 0xb3, 0x10, 0x37, 0x0c, 0x8b, 0x28, 0xda, 0x07,
-	0x98, 0xa2, 0x7d, 0x2d, 0xf4, 0x13, 0xb4, 0xb3, 0x05, 0xe4, 0x95, 0x23, 0x94, 0x92, 0x5d, 0x61,
-	0xe1, 0x2e, 0xcd, 0xd5, 0x70, 0x3b, 0xb7, 0x0f, 0xf7, 0x0a, 0x7a, 0x2e, 0xe7, 0x33, 0x14, 0x37,
-	0x28, 0xca, 0x7a, 0x0e, 0x74, 0x19, 0xe7, 0x02, 0xa5, 0x2c, 0x45, 0x0b, 0x93, 0xbe, 0x84, 0xa3,
-	0x89, 0x48, 0x52, 0x3d, 0xfc, 0x18, 0x3a, 0x32, 0x7f, 0x28, 0xa2, 0x0b, 0x8b, 0x3a, 0x70, 0x3c,
-	0x9e, 0xa3, 0x7f, 0x3d, 0x4e, 0xe2, 0x18, 0xfd, 0xac, 0x72, 0x91, 0x71, 0xf6, 0xb7, 0x03, 0x5d,
-	0x2e, 0x7c, 0xe6, 0xcf, 0x91, 0x9c, 0x43, 0xd3, 0xe5, 0x9c, 0x3c, 0xd2, 0x1a, 0xac, 0x50, 0x3e,
-	0x21, 0x9a, 0x23, 0x9f, 0x9a, 0xde, 0x23, 0x9f, 0xe1, 0x50, 0x27, 0x97, 0x50, 0x2d, 0x6e, 0x23,
-	0xd6, 0x16, 0xad, 0x0f, 0xb0, 0xbb, 0xa2, 0x98, 0x3c, 0xd5, 0x42, 0x4c, 0xba, 0xed, 0x0a, 0x2b,
-	0x96, 0x0d, 0x05, 0x93, 0x71, 0x8b, 0xc2, 0x3b, 0xe8, 0x16, 0x44, 0x93, 0x27, 0x6b, 0x01, 0x15,
-	0xe7, 0x96, 0xec, 0x73, 0x68, 0xce, 0x50, 0x19, 0x3b, 0xac, 0x40, 0xb7, 0x64, 0xbd, 0x85, 0x76,
-	0xce, 0x35, 0x79, 0xac, 0xb9, 0xeb, 0xac, 0x5b, 0x32, 0x2f, 0xa0, 0xb3, 0x44, 0x96, 0x9c, 0x18,
-	0xeb, 0xaa, 0xa1, 0x7e, 0xdb, 0xb6, 0x0b, 0xdc, 0xd7, 0xb6, 0xad, 0x9f, 0x81, 0x7d, 0xda, 0xe9,
-	0xda, 0xb4, 0x53, 0xfc, 0xff, 0x6f, 0xb4, 0x02, 0xdd, 0xa8, 0x6b, 0x1e, 0x80, 0x45, 0xe1, 0x23,
-	0x40, 0x05, 0x3f, 0xe9, 0xeb, 0xad, 0x9b, 0x57, 0x61, 0xd1, 0xf8, 0x02, 0xf7, 0x8d, 0x9b, 0x20,
-	0xcf, 0x75, 0x70, 0x37, 0x5e, 0xcc, 0x66, 0xb5, 0xef, 0x9d, 0xfc, 0x8f, 0x67, 0xf4, 0x2f, 0x00,
-	0x00, 0xff, 0xff, 0x4b, 0xf5, 0xc3, 0xf8, 0x9e, 0x06, 0x00, 0x00,
+	// 440 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x54, 0x5b, 0x8b, 0xd3, 0x40,
+	0x14, 0xde, 0x6c, 0xba, 0x2d, 0x3d, 0xeb, 0x42, 0x3b, 0xde, 0x42, 0xc1, 0x52, 0x07, 0x94, 0x82,
+	0xb2, 0xc2, 0xd6, 0x27, 0x1f, 0x64, 0xa3, 0x0b, 0x51, 0xf0, 0x29, 0xc1, 0x1f, 0x30, 0x76, 0x8e,
+	0x35, 0x98, 0xcb, 0x38, 0x33, 0xad, 0xf6, 0x9f, 0xfb, 0x28, 0x93, 0x4b, 0x73, 0x6b, 0x5c, 0xfa,
+	0x96, 0x73, 0xf9, 0xce, 0xf7, 0xcd, 0xf9, 0x0e, 0x01, 0xba, 0x91, 0x62, 0xfd, 0x86, 0xe3, 0xf7,
+	0x30, 0x09, 0x75, 0x98, 0x26, 0xaa, 0xfe, 0x7d, 0x2d, 0x64, 0xaa, 0x53, 0x72, 0x59, 0x4b, 0xd1,
+	0x04, 0x06, 0x9f, 0x35, 0xc6, 0x64, 0x02, 0xf6, 0x4f, 0xdc, 0x3b, 0xd6, 0xc2, 0x5a, 0x8e, 0x7d,
+	0xf3, 0x49, 0x1e, 0xc1, 0xc5, 0x8e, 0x45, 0x5b, 0x74, 0xce, 0x17, 0xd6, 0xf2, 0x81, 0x9f, 0x07,
+	0x64, 0x0e, 0x10, 0x31, 0xa5, 0xbf, 0x0a, 0xce, 0x34, 0x3a, 0xf6, 0xc2, 0x5a, 0x5e, 0xf9, 0xb5,
+	0x8c, 0xa9, 0xe3, 0x1f, 0x11, 0x4a, 0x66, 0xc6, 0x3b, 0x83, 0xbc, 0x5e, 0x65, 0xe8, 0x0a, 0xc0,
+	0xe5, 0xdc, 0xc7, 0x5f, 0x5b, 0x54, 0x9a, 0xbc, 0x80, 0x41, 0xa8, 0x31, 0xce, 0x68, 0x2f, 0x6f,
+	0xa6, 0xd7, 0x75, 0xb1, 0x46, 0x96, 0x9f, 0x95, 0xe9, 0x7b, 0x78, 0xfc, 0x31, 0x8d, 0x05, 0x93,
+	0xe8, 0x26, 0x3c, 0xf8, 0xcd, 0xc4, 0x89, 0xf8, 0x15, 0x40, 0x80, 0xfa, 0x44, 0xd0, 0x73, 0xb8,
+	0xba, 0xc3, 0x08, 0x35, 0x96, 0xb8, 0xce, 0x8a, 0x28, 0x81, 0x49, 0xde, 0xe2, 0x46, 0x51, 0xd1,
+	0x45, 0xe7, 0x00, 0x5e, 0xc5, 0xd5, 0xc5, 0x7c, 0x82, 0x0b, 0x1f, 0x45, 0xb4, 0x27, 0x0e, 0x8c,
+	0x62, 0x54, 0x8a, 0x6d, 0xb0, 0x28, 0x97, 0xe1, 0x41, 0xe0, 0xf9, 0xff, 0x05, 0xbe, 0x86, 0x89,
+	0xcb, 0x79, 0x80, 0x72, 0x87, 0xb2, 0xe4, 0x73, 0x60, 0xc4, 0x38, 0x97, 0xa8, 0x54, 0x39, 0xb4,
+	0x08, 0xe9, 0x2b, 0x98, 0xde, 0xc9, 0x54, 0x34, 0xdb, 0x9f, 0xc0, 0x50, 0x65, 0x89, 0xa2, 0xbb,
+	0x88, 0xe8, 0x43, 0x98, 0x7a, 0xa8, 0xf3, 0x5e, 0x55, 0xbe, 0xec, 0xa5, 0xd9, 0xa2, 0xc9, 0x7c,
+	0x09, 0x73, 0xa6, 0xbc, 0xd9, 0x30, 0xd9, 0x86, 0xa9, 0x08, 0x6f, 0xfe, 0xda, 0x30, 0xe2, 0x72,
+	0xcd, 0xd6, 0x3f, 0x90, 0xbc, 0x05, 0xdb, 0xe5, 0x9c, 0x3c, 0x6d, 0xbc, 0xa1, 0x3a, 0x80, 0x19,
+	0x69, 0x14, 0xb2, 0xc5, 0xd0, 0x33, 0x83, 0x0a, 0x50, 0xb7, 0x50, 0x95, 0x83, 0x3d, 0xa8, 0x77,
+	0x30, 0xcc, 0xdd, 0x20, 0xb3, 0x46, 0xbd, 0xe1, 0x62, 0x0f, 0xf6, 0x16, 0xc6, 0x07, 0x27, 0xc9,
+	0xb3, 0x23, 0xf0, 0xca, 0xe1, 0x7e, 0xcd, 0x5e, 0x47, 0xb3, 0x77, 0x9f, 0xe6, 0x5b, 0x18, 0x1f,
+	0x3c, 0x6c, 0xf1, 0xb6, 0xbd, 0xed, 0x99, 0xe0, 0x65, 0xf7, 0x56, 0x58, 0x45, 0xe6, 0x6d, 0xfa,
+	0xa6, 0x87, 0xb3, 0xf6, 0x4a, 0x4b, 0x3b, 0xe9, 0x19, 0xf9, 0x00, 0x50, 0x1d, 0x48, 0x6b, 0x50,
+	0xe7, 0x72, 0x8e, 0x8b, 0xf9, 0x36, 0xcc, 0xfe, 0x30, 0xab, 0x7f, 0x01, 0x00, 0x00, 0xff, 0xff,
+	0x82, 0xd0, 0x5e, 0xf5, 0x87, 0x04, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -720,18 +570,13 @@ const _ = grpc.SupportPackageIsVersion4
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type DrcacheClient interface {
 	Add(ctx context.Context, in *AddRequest, opts ...grpc.CallOption) (*Reply, error)
-	CompareAndSwap(ctx context.Context, in *CompareAndSwapRequest, opts ...grpc.CallOption) (*Reply, error)
-	Decrement(ctx context.Context, in *DecrementRequest, opts ...grpc.CallOption) (*Reply, error)
-	Increment(ctx context.Context, in *IncrementRequest, opts ...grpc.CallOption) (*Reply, error)
-	Replace(ctx context.Context, in *ReplaceRequest, opts ...grpc.CallOption) (*Reply, error)
 	Set(ctx context.Context, in *SetRequest, opts ...grpc.CallOption) (*Reply, error)
-	Touch(ctx context.Context, in *TouchRequest, opts ...grpc.CallOption) (*Reply, error)
 	Delete(ctx context.Context, in *DeleteRequest, opts ...grpc.CallOption) (*Reply, error)
 	DeleteAll(ctx context.Context, in *DeleteAllRequest, opts ...grpc.CallOption) (*Reply, error)
 	Get(ctx context.Context, in *GetRequest, opts ...grpc.CallOption) (*Reply, error)
 	AddServer(ctx context.Context, in *AddServerRequest, opts ...grpc.CallOption) (*Reply, error)
+	GetServers(ctx context.Context, in *GetServersRequest, opts ...grpc.CallOption) (*ServerList, error)
 	DropServer(ctx context.Context, in *DropServerRequest, opts ...grpc.CallOption) (*Reply, error)
-	CheckConnection(ctx context.Context, in *CheckConnectionRequest, opts ...grpc.CallOption) (*Reply, error)
 }
 
 type drcacheClient struct {
@@ -751,54 +596,9 @@ func (c *drcacheClient) Add(ctx context.Context, in *AddRequest, opts ...grpc.Ca
 	return out, nil
 }
 
-func (c *drcacheClient) CompareAndSwap(ctx context.Context, in *CompareAndSwapRequest, opts ...grpc.CallOption) (*Reply, error) {
-	out := new(Reply)
-	err := c.cc.Invoke(ctx, "/definitions.drcache/CompareAndSwap", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *drcacheClient) Decrement(ctx context.Context, in *DecrementRequest, opts ...grpc.CallOption) (*Reply, error) {
-	out := new(Reply)
-	err := c.cc.Invoke(ctx, "/definitions.drcache/Decrement", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *drcacheClient) Increment(ctx context.Context, in *IncrementRequest, opts ...grpc.CallOption) (*Reply, error) {
-	out := new(Reply)
-	err := c.cc.Invoke(ctx, "/definitions.drcache/Increment", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *drcacheClient) Replace(ctx context.Context, in *ReplaceRequest, opts ...grpc.CallOption) (*Reply, error) {
-	out := new(Reply)
-	err := c.cc.Invoke(ctx, "/definitions.drcache/Replace", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *drcacheClient) Set(ctx context.Context, in *SetRequest, opts ...grpc.CallOption) (*Reply, error) {
 	out := new(Reply)
 	err := c.cc.Invoke(ctx, "/definitions.drcache/Set", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *drcacheClient) Touch(ctx context.Context, in *TouchRequest, opts ...grpc.CallOption) (*Reply, error) {
-	out := new(Reply)
-	err := c.cc.Invoke(ctx, "/definitions.drcache/Touch", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -841,6 +641,15 @@ func (c *drcacheClient) AddServer(ctx context.Context, in *AddServerRequest, opt
 	return out, nil
 }
 
+func (c *drcacheClient) GetServers(ctx context.Context, in *GetServersRequest, opts ...grpc.CallOption) (*ServerList, error) {
+	out := new(ServerList)
+	err := c.cc.Invoke(ctx, "/definitions.drcache/GetServers", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *drcacheClient) DropServer(ctx context.Context, in *DropServerRequest, opts ...grpc.CallOption) (*Reply, error) {
 	out := new(Reply)
 	err := c.cc.Invoke(ctx, "/definitions.drcache/DropServer", in, out, opts...)
@@ -850,30 +659,16 @@ func (c *drcacheClient) DropServer(ctx context.Context, in *DropServerRequest, o
 	return out, nil
 }
 
-func (c *drcacheClient) CheckConnection(ctx context.Context, in *CheckConnectionRequest, opts ...grpc.CallOption) (*Reply, error) {
-	out := new(Reply)
-	err := c.cc.Invoke(ctx, "/definitions.drcache/CheckConnection", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 // DrcacheServer is the server API for Drcache service.
 type DrcacheServer interface {
 	Add(context.Context, *AddRequest) (*Reply, error)
-	CompareAndSwap(context.Context, *CompareAndSwapRequest) (*Reply, error)
-	Decrement(context.Context, *DecrementRequest) (*Reply, error)
-	Increment(context.Context, *IncrementRequest) (*Reply, error)
-	Replace(context.Context, *ReplaceRequest) (*Reply, error)
 	Set(context.Context, *SetRequest) (*Reply, error)
-	Touch(context.Context, *TouchRequest) (*Reply, error)
 	Delete(context.Context, *DeleteRequest) (*Reply, error)
 	DeleteAll(context.Context, *DeleteAllRequest) (*Reply, error)
 	Get(context.Context, *GetRequest) (*Reply, error)
 	AddServer(context.Context, *AddServerRequest) (*Reply, error)
+	GetServers(context.Context, *GetServersRequest) (*ServerList, error)
 	DropServer(context.Context, *DropServerRequest) (*Reply, error)
-	CheckConnection(context.Context, *CheckConnectionRequest) (*Reply, error)
 }
 
 // UnimplementedDrcacheServer can be embedded to have forward compatible implementations.
@@ -883,23 +678,8 @@ type UnimplementedDrcacheServer struct {
 func (*UnimplementedDrcacheServer) Add(ctx context.Context, req *AddRequest) (*Reply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Add not implemented")
 }
-func (*UnimplementedDrcacheServer) CompareAndSwap(ctx context.Context, req *CompareAndSwapRequest) (*Reply, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CompareAndSwap not implemented")
-}
-func (*UnimplementedDrcacheServer) Decrement(ctx context.Context, req *DecrementRequest) (*Reply, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Decrement not implemented")
-}
-func (*UnimplementedDrcacheServer) Increment(ctx context.Context, req *IncrementRequest) (*Reply, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Increment not implemented")
-}
-func (*UnimplementedDrcacheServer) Replace(ctx context.Context, req *ReplaceRequest) (*Reply, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Replace not implemented")
-}
 func (*UnimplementedDrcacheServer) Set(ctx context.Context, req *SetRequest) (*Reply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Set not implemented")
-}
-func (*UnimplementedDrcacheServer) Touch(ctx context.Context, req *TouchRequest) (*Reply, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Touch not implemented")
 }
 func (*UnimplementedDrcacheServer) Delete(ctx context.Context, req *DeleteRequest) (*Reply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Delete not implemented")
@@ -913,11 +693,11 @@ func (*UnimplementedDrcacheServer) Get(ctx context.Context, req *GetRequest) (*R
 func (*UnimplementedDrcacheServer) AddServer(ctx context.Context, req *AddServerRequest) (*Reply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AddServer not implemented")
 }
+func (*UnimplementedDrcacheServer) GetServers(ctx context.Context, req *GetServersRequest) (*ServerList, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetServers not implemented")
+}
 func (*UnimplementedDrcacheServer) DropServer(ctx context.Context, req *DropServerRequest) (*Reply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DropServer not implemented")
-}
-func (*UnimplementedDrcacheServer) CheckConnection(ctx context.Context, req *CheckConnectionRequest) (*Reply, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CheckConnection not implemented")
 }
 
 func RegisterDrcacheServer(s *grpc.Server, srv DrcacheServer) {
@@ -942,78 +722,6 @@ func _Drcache_Add_Handler(srv interface{}, ctx context.Context, dec func(interfa
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Drcache_CompareAndSwap_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CompareAndSwapRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(DrcacheServer).CompareAndSwap(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/definitions.drcache/CompareAndSwap",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(DrcacheServer).CompareAndSwap(ctx, req.(*CompareAndSwapRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Drcache_Decrement_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DecrementRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(DrcacheServer).Decrement(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/definitions.drcache/Decrement",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(DrcacheServer).Decrement(ctx, req.(*DecrementRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Drcache_Increment_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(IncrementRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(DrcacheServer).Increment(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/definitions.drcache/Increment",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(DrcacheServer).Increment(ctx, req.(*IncrementRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Drcache_Replace_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ReplaceRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(DrcacheServer).Replace(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/definitions.drcache/Replace",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(DrcacheServer).Replace(ctx, req.(*ReplaceRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _Drcache_Set_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SetRequest)
 	if err := dec(in); err != nil {
@@ -1028,24 +736,6 @@ func _Drcache_Set_Handler(srv interface{}, ctx context.Context, dec func(interfa
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(DrcacheServer).Set(ctx, req.(*SetRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Drcache_Touch_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TouchRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(DrcacheServer).Touch(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/definitions.drcache/Touch",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(DrcacheServer).Touch(ctx, req.(*TouchRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1122,6 +812,24 @@ func _Drcache_AddServer_Handler(srv interface{}, ctx context.Context, dec func(i
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Drcache_GetServers_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetServersRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DrcacheServer).GetServers(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/definitions.drcache/GetServers",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DrcacheServer).GetServers(ctx, req.(*GetServersRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _Drcache_DropServer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DropServerRequest)
 	if err := dec(in); err != nil {
@@ -1140,24 +848,6 @@ func _Drcache_DropServer_Handler(srv interface{}, ctx context.Context, dec func(
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Drcache_CheckConnection_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CheckConnectionRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(DrcacheServer).CheckConnection(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/definitions.drcache/CheckConnection",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(DrcacheServer).CheckConnection(ctx, req.(*CheckConnectionRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 var _Drcache_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "definitions.drcache",
 	HandlerType: (*DrcacheServer)(nil),
@@ -1167,28 +857,8 @@ var _Drcache_serviceDesc = grpc.ServiceDesc{
 			Handler:    _Drcache_Add_Handler,
 		},
 		{
-			MethodName: "CompareAndSwap",
-			Handler:    _Drcache_CompareAndSwap_Handler,
-		},
-		{
-			MethodName: "Decrement",
-			Handler:    _Drcache_Decrement_Handler,
-		},
-		{
-			MethodName: "Increment",
-			Handler:    _Drcache_Increment_Handler,
-		},
-		{
-			MethodName: "Replace",
-			Handler:    _Drcache_Replace_Handler,
-		},
-		{
 			MethodName: "Set",
 			Handler:    _Drcache_Set_Handler,
-		},
-		{
-			MethodName: "Touch",
-			Handler:    _Drcache_Touch_Handler,
 		},
 		{
 			MethodName: "Delete",
@@ -1207,12 +877,12 @@ var _Drcache_serviceDesc = grpc.ServiceDesc{
 			Handler:    _Drcache_AddServer_Handler,
 		},
 		{
-			MethodName: "DropServer",
-			Handler:    _Drcache_DropServer_Handler,
+			MethodName: "GetServers",
+			Handler:    _Drcache_GetServers_Handler,
 		},
 		{
-			MethodName: "CheckConnection",
-			Handler:    _Drcache_CheckConnection_Handler,
+			MethodName: "DropServer",
+			Handler:    _Drcache_DropServer_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

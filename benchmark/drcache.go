@@ -1,6 +1,4 @@
-package benchmark
-
-import "drcache-client/grpc"
+package main
 
 func test_add_drcache() {
 

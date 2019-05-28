@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"drcache-client/consistent_hashing"
 	"google.golang.org/grpc"
 	"log"
 	"time"
@@ -9,33 +10,34 @@ import (
 	pb "drcache-client/grpc"
 )
 
-const (
-	address = "localhost:50051"
+var (
+	servers = map[string]struct{}{"localhost:50051": {}}
 )
 
-func add(c pb.DrcacheClient, item pb.Item) (*pb.Reply, error) {
-	ctx, cancel := context.WithTimeout(context.Background(), 4*time.Second)
+func add(c map[string]pb.DrcacheClient, item pb.Item, ring *consistent_hashing.Ring) (*pb.Reply, error) {
+	ctx, cancel := context.WithTimeout(context.Background(), time.Minute)
 	defer cancel()
-	r, err := c.Add(ctx, &pb.AddRequest{Item: &item})
+	client := c[ring.Get(item.Key)]
+	r, err := client.Add(ctx, &pb.AddRequest{Item: &item})
 	return r, err
 }
 
-func get(c pb.DrcacheClient, key string) (*pb.Reply, error) {
-	ctx, cancel := context.WithTimeout(context.Background(), 4*time.Second)
+func get(c map[string]pb.DrcacheClient, key string, ring *consistent_hashing.Ring) (*pb.Reply, error) {
+	ctx, cancel := context.WithTimeout(context.Background(), time.Minute)
 	defer cancel()
-	r, err := c.Get(ctx, &pb.GetRequest{Key: key})
+	r, err := c[ring.Get(key)].Get(ctx, &pb.GetRequest{Key: key})
 	return r, err
 }
 
 func delete(c pb.DrcacheClient, key string) (*pb.Reply, error) {
-	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
+	ctx, cancel := context.WithTimeout(context.Background(), time.Minute)
 	defer cancel()
 	r, err := c.Delete(ctx, &pb.DeleteRequest{Key: key})
 	return r, err
 }
 
 func deleteAll(c pb.DrcacheClient) (*pb.Reply, error) {
-	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
+	ctx, cancel := context.WithTimeout(context.Background(), time.Minute)
 	defer cancel()
 	r, err := c.DeleteAll(ctx, &pb.DeleteAllRequest{})
 	return r, err
@@ -43,42 +45,30 @@ func deleteAll(c pb.DrcacheClient) (*pb.Reply, error) {
 
 func main() {
 
-	conn, err := grpc.Dial(address, grpc.WithInsecure())
-	if err != nil {
-		log.Fatalf("failed to listen: %v", err)
+	ring := consistent_hashing.NewRing(servers)
+	clients := make(map[string]pb.DrcacheClient)
+
+	for address := range servers {
+		conn, err := grpc.Dial(address, grpc.WithInsecure())
+		if err != nil {
+			log.Fatalf("failed to listen: %v", err)
+		}
+		c := pb.NewDrcacheClient(conn)
+		clients[address] = c
 	}
-	defer conn.Close()
 
-	c := pb.NewDrcacheClient(conn)
-
-	item1 := pb.Item{Key: "qwer", Value: []byte("11199331"), LastUpdate: 1, Expiration: 100}
-	r, err := add(c, item1)
+	item1 := pb.Item{Key: "demokey", Value: []byte("demovalue"), LastUpdate: 1, Expiration: 100}
+	r, err := add(clients, item1, ring)
 
 	if err != nil {
-		log.Fatalf("could not greet: %v", err)
+		log.Fatalf("Error %v", err)
 	}
 	log.Printf("key: %s", r.Message)
 
-	item2 := pb.Item{Key: "qwert", Value: []byte("111331"), LastUpdate: 1, Expiration: 100}
-	r2, err2 := add(c, item2)
-
-	if err2 != nil {
-		log.Fatalf("could not greet: %v", err2)
+	r1, err1 := get(clients, "demokey", ring)
+	if err != nil {
+		log.Fatalf("Error %v", err1)
 	}
-	log.Printf("key: %s", r2.Message)
+	log.Printf("Item={ %s: %s}", r1.Item.Key, r1.Item.Value)
 
-	//add(c, item2)
-	r3, err3 := deleteAll(c)
-
-	if err3 != nil {
-		log.Fatalf("could not greet: %v", err3)
-	}
-	log.Printf("Greeting: %s", r3)
-
-	r1, err1 := get(c, "qwer")
-
-	if err1 != nil {
-		log.Fatalf("could not greet: %v", err)
-	}
-	log.Printf("Greeting: %s", r1.Item.Value)
 }

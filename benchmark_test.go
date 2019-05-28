@@ -1,6 +1,7 @@
 package main
 
 import (
+	"drcache-client/consistent_hashing"
 	"github.com/bradfitz/gomemcache/memcache"
 	"google.golang.org/grpc"
 	"log"
@@ -10,36 +11,46 @@ import (
 )
 
 func BenchmarkAdd(b *testing.B) {
-	conn, err := grpc.Dial(address, grpc.WithInsecure())
-	if err != nil {
-		log.Fatalf("failed to listen: %v", err)
-	}
-	//defer conn.Close()
 
-	c := pb.NewDrcacheClient(conn)
+	ring := consistent_hashing.NewRing(servers)
+	clients := make(map[string]pb.DrcacheClient)
+
+	for address := range servers {
+		conn, err := grpc.Dial(address, grpc.WithInsecure())
+		if err != nil {
+			log.Fatalf("failed to listen: %v", err)
+		}
+		c := pb.NewDrcacheClient(conn)
+		clients[address] = c
+	}
+
 	for n := 0; n < b.N; n++ {
 		item1 := pb.Item{Key: string(n + 100), Value: []byte("11331"), LastUpdate: 1, Expiration: 100}
-		r, err := add(c, item1)
+		_, err := add(clients, item1, ring)
 
 		if err != nil {
 			log.Fatalf("could not greet: %v", err)
 		}
-		log.Printf("key: %s", r.Message)
+		//log.Printf("key: %s", r.Message)
 	}
 }
 
 //qq
 func BenchmarkGet(b *testing.B) {
-	conn, err := grpc.Dial(address, grpc.WithInsecure())
-	if err != nil {
-		log.Fatalf("failed to listen: %v", err)
-	}
-	//defer conn.Close()
+	ring := consistent_hashing.NewRing(servers)
+	clients := make(map[string]pb.DrcacheClient)
 
-	c := pb.NewDrcacheClient(conn)
+	for address := range servers {
+		conn, err := grpc.Dial(address, grpc.WithInsecure())
+		if err != nil {
+			log.Fatalf("failed to listen: %v", err)
+		}
+		c := pb.NewDrcacheClient(conn)
+		clients[address] = c
+	}
 	for n := 0; n < b.N; n++ {
 		go func() {
-			r, err := get(c, string(n+100))
+			r, err := get(clients, string(n+100), ring)
 
 			if err != nil {
 				log.Fatalf("could not greet: %v", err)
@@ -86,5 +97,3 @@ func BenchmarkAddMemcache(b *testing.B) {
 		}()
 	}
 }
-
-//func TestAdd(t *testing.T) {go BenchmarkAdd()}
